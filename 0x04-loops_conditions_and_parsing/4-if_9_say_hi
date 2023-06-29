@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# print best school 10 time, for the 9th iter display Hi
+
+I=1
+
+while [ $I -le 10 ]
+do
+    echo "Best School"
+
+    if [ $I -eq 9 ]; then
+        echo "Hi"
+    fi
+    I=$(( I + 1 ))
+done
