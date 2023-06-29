@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#print number, from 4th, 9th, 17th print bad luck from china/japan/italy
+
+I=1
+
+while [ $I -le 20 ]
+do
+    if [ $I -eq 4 ]; then
+        echo "bad luck from China"
+    elif [ $I -eq 9 ]; then
+        echo "bad luck from Japan"
+    elif [ $I -eq 17 ]; then
+        echo "bad luck from Italy"
+    else
+        echo "$I"
+    fi
+    I=$((I+1))
+done
