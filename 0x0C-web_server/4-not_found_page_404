@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Install nginx on your web-01 server
-apt-get -y update
-apt-get -y install nginx
-echo "Hello World!" | sudo tee /var/www/html/index.html
-echo $"Ceci n'est pas une page\n" | sudo tee /var/www/html/404.html
+sudo pt-get -y update
+sudo apt-get -y install nginx
+echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
+echo $"Ceci n'est pas une page\n" | sudo tee /var/www/html/404.html > /dev/null
 sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
-sudo sed -i '/location / {/a error_page 404 /404.html' /etc/nginx/sites-available/default
-service nginx start
+sudo sed -i '/location \/ {/a error_page 404 /404.html' /etc/nginx/sites-available/default
+sudo service nginx start
