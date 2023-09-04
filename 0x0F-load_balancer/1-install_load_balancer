@@ -13,8 +13,8 @@ frontend haproxy_balancer
     
 backend webservers
     balance roundrobin
-    server 229327-web-01 100.26.238.129
-    server 229327-web-02 18.210.15.20
+    server 229327-web-01 100.26.238.129 check port 80
+    server 229327-web-02 18.210.15.20 check port 80
 "
 
 echo "$config" | sudo tee -a /etc/haproxy/haproxy.cfg > /dev/null
