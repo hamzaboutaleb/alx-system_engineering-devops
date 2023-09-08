@@ -18,12 +18,12 @@ defaults
 frontend haproxy_balancer
     bind *:80
     mode http
+    redirect scheme https code 301 if !{ ssl_fc }
     default_backend webservers
 
 frontend www-https
     bind *:443 ssl crt /etc/letsencrypt/live/www.hamzaboutaleb.tech/www.hamzaboutaleb.tech.pem
     mode http
-    redirect scheme https code 301 if !{ ssl_fc }
     default_backend webservers
 
 backend webservers
