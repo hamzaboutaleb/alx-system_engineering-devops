@@ -41,7 +41,7 @@ def print_user_todos(user, todos):
     result = text.format(name, len(completed), len(todosList))
     for todo in completed:
         result += f"\t {todo['title']}\n"
-    print(result)
+    print(result[0:-1])
 
 
 def main():
