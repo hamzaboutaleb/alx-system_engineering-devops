@@ -5,7 +5,7 @@ from requests.exceptions import HTTPError
 from sys import argv
 
 
-FILE_OUTPUT_NAME = "USER_ID.csv"
+FILE_OUTPUT_NAME = "{}.csv"
 
 
 def get_user(id):
@@ -56,8 +56,8 @@ def to_csv_format(user, todos):
     return result[0: -1]
 
 
-def save_to_csv_file(content):
-    with open(FILE_OUTPUT_NAME, "w") as f:
+def save_to_csv_file(content, user_id):
+    with open(FILE_OUTPUT_NAME.format(user_id), "w") as f:
         f.write(content)
 
 
@@ -74,7 +74,7 @@ def main():
         user = get_user(id)
         todos = get_todos_by_user_id(id)
         csv_format = to_csv_format(user, todos['todos'])
-        save_to_csv_file(csv_format)
+        save_to_csv_file(csv_format, user['id'])
     except ValueError:
         print("id must be integer")
     except HTTPError:
