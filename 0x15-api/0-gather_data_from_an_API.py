@@ -20,12 +20,12 @@ def get_todos_by_user_id(id):
         raise HTTPError(f'HTTP Error: {response.status_code}')
     todos = response.json()
     result = []
-    completed = 0
+    completed = []
     for todo in todos:
         if todo['userId'] == id:
             result.append(todo)
             if todo['completed']:
-                completed += 1
+                completed.append(todo)
     return {
         'todos': result,
         'completed': completed
@@ -34,11 +34,13 @@ def get_todos_by_user_id(id):
 
 def print_user_todos(user, todos):
     """print user todos"""
-    result = f"Employee {user['name']} is done with tasks\
-  ({str(todos['completed'])}/{len(todos['todos'])}):\n"
-    for todo in todos['todos']:
-        if todo['completed']:
-            result += f"     {todo['title']}\n"
+    text = "Employee {} is done with tasks({}/{}):\n"
+    name = user['name']
+    completed = todos['completed']
+    todosList = todos['todos']
+    result = text.format(name, len(completed), len(todosList))
+    for todo in completed:
+        result += f"     {todo['title']}\n"
     print(result)
 
 
