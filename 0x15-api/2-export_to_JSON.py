@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Get user todos"""
 import requests
-import json
 from requests.exceptions import HTTPError
+import json
 from sys import argv
 
 
@@ -35,6 +35,7 @@ def get_todos_by_user_id(id):
         'completed': completed
     }
 
+
 def to_json_format(user, todos):
     id = user['id']
     username = user['username']
@@ -51,9 +52,11 @@ def to_json_format(user, todos):
 
     return json.dumps(result)
 
+
 def save_file(content, user_id):
     with open(FILE_OUTPUT_NAME.format(user_id), "w") as f:
         f.write(content)
+
 
 def print_user_todos(user, todos):
     """print user todos"""
