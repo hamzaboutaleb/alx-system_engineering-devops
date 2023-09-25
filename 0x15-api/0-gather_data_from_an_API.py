@@ -34,13 +34,13 @@ def get_todos_by_user_id(id):
 
 def print_user_todos(user, todos):
     """print user todos"""
-    text = " Employee {} is done with tasks({}/{}):\n"
+    text = "Employee {} is done with tasks({}/{}):\n"
     name = user['name']
     completed = todos['completed']
     todosList = todos['todos']
     result = text.format(name, len(completed), len(todosList))
     for todo in completed:
-        result += f"\t{todo['title']}\n"
+        result += f"\t {todo['title']}\n"
     print(result)
 
 
