@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Get user todos"""
+import json
 import requests
 from requests.exceptions import HTTPError
-import json
 from sys import argv
 
 
